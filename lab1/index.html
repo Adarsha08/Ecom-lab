@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="index.js"></script>
+</head>
+<body>
+    <h1>product_category</h1>
+    <input type="text" id="category-input" placeholder="Enter category name" />
+    <button onclick="addCategory()">Add Category</button>
+    <ol id="category-list"></ol>
+
+    <hr>
+    <label for="category-select">Select Category:</label>
+    <select id="category-select"></select>
+    <input type="text" id="item-name" placeholder="Item name" />
+    <input type="number" id="item-price" placeholder="Item price" />
+    <button onclick="addItem()">Add Item</button>
+    <ul id="item-list"></ul>
+
+    <script src="product_category.js"></script>
+    <script>
+        function addCategory() {
+            const input = document.getElementById('category-input');
+            const categoryName = input.value.trim();
+            if (categoryName) {
+                store.createCategory(categoryName);
+                input.value = '';
+            }
+        }
+
+        function addItem() {
+            const category = document.getElementById('category-select').value;
+            const itemName = document.getElementById('item-name').value.trim();
+            const itemPrice = document.getElementById('item-price').value.trim();
+            if (category && itemName && itemPrice) {
+                store.addItemToCategory(category, itemName, itemPrice);
+                document.getElementById('item-name').value = '';
+                document.getElementById('item-price').value = '';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            store.updateCategorySelect();
+            document.getElementById('category-select').addEventListener('change', function() {
+                store.updateItemList();
+            });
+        });
+    </script>
+</body>
+</html>
