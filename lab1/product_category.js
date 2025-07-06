@@ -51,8 +51,10 @@ class EcommerceStore {
         ) {
             this.categories[categoryName].push({ name: itemName, price: itemPrice });
             this.updateItemList();
+            this.displayCart();
         }
     }
+    
 
     // Update the category dropdown
     updateCategorySelect() {
