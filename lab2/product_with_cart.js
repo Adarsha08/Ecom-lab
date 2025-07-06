@@ -37,6 +37,7 @@ class EcommerceStore{
                 </li>`
             }
         ).join(" ")
+        
     }
 
     addToCart(productId){
@@ -82,6 +83,7 @@ class EcommerceStore{
                 }
             )
             this.carts = newUpdatedCarts
+            this.displaycart();
             console.log("cart updated : ", this.carts)
             return;
         }
@@ -97,6 +99,7 @@ class EcommerceStore{
         console.log("cart added : ", this.carts)
         this.displaycart();
     }
+
     displaycart() {
         let cartUIEle = document.getElementById("carts");
         if (!cartUIEle) return;
@@ -131,6 +134,18 @@ class EcommerceStore{
             </div>
             `
         ).join("");
+        let grantTotalele=document.getElementById("grand-total");
+        grantTotalele.innerHTML="Grant Total:"+this.getGrandTotal();
+    }
+    getGrandTotal()
+    {
+        let getGrandTotal=0
+        this.carts.forEach(cart =>
+        {
+            getGrandTotal += cart.price * cart.quantity
+        })
+        return getGrandTotal;
+        
     }
 }
 

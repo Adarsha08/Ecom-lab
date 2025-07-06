@@ -16,11 +16,16 @@
                 <!-- Product items will be injected here -->
             </ul>
         </div>
-        <div id="carts-list">
+        <div id="carts-list" style="border:2px solid black;height: 80vh; width: 500px; overflow-y: auto; text-align: center; position: relative;">
             <h3>Cart List</h3>
             <ul id="carts">
                 <!-- Cart items will be injected here -->
             </ul>
+            <div style="padding: 5px; background-color: burlywood; position: absolute; bottom: 0; left: 0; right: 0; display: flex ; justify-content: space-between; align-items: center;">
+                <b id="grand-total">Grand Total:</b>
+                <buton style=" border-radius: 5px; width: 80px; text-align: center; display: flex ;justify-content: center; align-items: center; color: white ;  cursor: pointer; background-color: rgb(63, 161, 63); height: 30px;"  onclick="" id="checkout-btn">Checkout</button>
+                
+            </div>
         </div>
     </div>
 
